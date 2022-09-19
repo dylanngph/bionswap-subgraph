@@ -1,0 +1,17 @@
+{
+  "name": "bion-launchpad-dev",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "create": "graph create hlhdaiaaii/bion-launchpad-dev --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create hlhdaiaaii/bion-launchpad-dev --node http://127.0.0.1:8020",
+    "codegen": "graph codegen ./launchpad.yaml",
+    "build": "graph build ./launchpad.yaml",
+    "deploy": "graph deploy --product hosted-service hlhdaiaaii/bion-launchpad-dev ./launchpad.yaml",
+    "deploy-local": "graph deploy hlhdaiaaii/bion-launchpad-dev --ipfs http://127.0.0.1:5001 --node http://127.0.0.1:8020"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-ts": "^0.27.0"
+  },
+  "dependencies": {}
+}

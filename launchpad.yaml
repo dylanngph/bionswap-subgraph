@@ -1,0 +1,25 @@
+specVersion: 0.0.2
+description: Bion Launchpad
+schema:
+  file: ./launchpad.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: PreSaleFactory
+    network: chapel
+    source:
+      address: "0xeb0f5771947f67D4D9394EF00232eB0DFF09D7d3"
+      abi: PreSaleFactory
+      startBlock: 23030330
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./mappings/PreSaleFactory.ts
+      entities:
+        - Sale
+      abis:
+        - name: PreSaleFactory
+          file: ./abi/PreSaleFactory.json
+      eventHandlers:
+        - event: SaleCreated(indexed address,indexed address,uint8,bytes32)
+          handler: handlePreSaleCreated

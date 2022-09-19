@@ -1,0 +1,11 @@
+type PreSale @entity {
+  id: ID!
+
+  saleType: Int!
+
+  owner: String!
+
+  salt: Bytes!
+
+  createdAt: BigInt!
+}
