@@ -7,9 +7,9 @@ dataSources:
     name: PreSaleFactory
     network: chapel
     source:
-      address: "0xeb0f5771947f67D4D9394EF00232eB0DFF09D7d3"
+      address: "0xd5E91A8335D0E5749256CB02bedA4017CBCbB530"
       abi: PreSaleFactory
-      startBlock: 23030330
+      startBlock: 23166818
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -23,3 +23,22 @@ dataSources:
       eventHandlers:
         - event: SaleCreated(indexed address,indexed address,uint8,bytes32)
           handler: handlePreSaleCreated
+templates:
+  - name: PreSale
+    kind: ethereum/contract
+    network: chapel
+    source:
+      abi: PreSale
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./mappings/PreSale.ts
+      entities:
+        - PreSale
+      abis:
+        - name: PreSale
+          file: ./abi/PreSale.json
+      eventHandlers:
+        - event: Purchased(indexed address,indexed address,uint256)
+          handler: handlePurchased

@@ -1,5 +1,6 @@
 import { SaleCreated as SaleCreatedEvent } from "../generated/PreSaleFactory/PreSaleFactory";
 import { PreSale } from "../generated/schema";
+import { PreSale as PreSaleTemplate} from "../generated/templates";
 
 function handlePreSaleCreated(event: SaleCreatedEvent): void {
   const saleAddress = event.params.sale.toHex();
@@ -13,6 +14,7 @@ function handlePreSaleCreated(event: SaleCreatedEvent): void {
   entity.salt = event.params.salt;
   entity.createdAt = event.block.timestamp;
 
+  PreSaleTemplate.create(event.params.sale);
   entity.save();
 }
 

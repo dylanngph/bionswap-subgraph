@@ -7,5 +7,21 @@ type PreSale @entity {
 
   salt: Bytes!
 
+  status: Int!
+
+  createdAt: BigInt!
+
+  updatedAt: BigInt!
+}
+
+type Purchase @entity {
+  id: ID!
+
+  preSale: PreSale!
+
+  purchaser: String!
+
+  amount: BigInt!
+
   createdAt: BigInt!
 }
