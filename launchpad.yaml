@@ -7,9 +7,9 @@ dataSources:
     name: PreSaleFactory
     network: chapel
     source:
-      address: "0xd5E91A8335D0E5749256CB02bedA4017CBCbB530"
+      address: "0xA6D9061810a1277AE123E0ceD34980Bc29B0ACF3"
       abi: PreSaleFactory
-      startBlock: 23166818
+      startBlock: 23258543
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -36,9 +36,14 @@ templates:
       file: ./mappings/PreSale.ts
       entities:
         - PreSale
+        - SaleTransaction
       abis:
         - name: PreSale
           file: ./abi/PreSale.json
       eventHandlers:
         - event: Purchased(indexed address,indexed address,uint256)
           handler: handlePurchased
+        - event: Claimed(indexed address,indexed address,uint256)
+          handler: handleClaimed
+        - event: Refunded(indexed address,indexed address,uint256)
+          handler: handleRefunded

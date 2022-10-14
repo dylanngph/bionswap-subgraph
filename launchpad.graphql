@@ -14,7 +14,7 @@ type PreSale @entity {
   updatedAt: BigInt!
 }
 
-type Purchase @entity {
+type SaleTransaction @entity {
   id: ID!
 
   preSale: PreSale!
@@ -22,6 +22,8 @@ type Purchase @entity {
   purchaser: String!
 
   amount: BigInt!
+
+  type: Int!
 
   createdAt: BigInt!
 }
